@@ -9,7 +9,7 @@ from livekit.agents import (
     cli,
     function_tool
 )
-from livekit.plugins import deepgram, openai, cartesia, silero, elevenlabs, groq    
+from livekit.plugins import silero, elevenlabs, groq    
 
 load_dotenv()
 logger = logging.getLogger("telephony-agent")
