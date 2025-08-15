@@ -410,6 +410,25 @@ LiveKit Trunk JSON should look like:
     """
     return config_info
 
+@app.route('/debug/test-render-agent')
+def test_render_agent():
+    """Test if Render-hosted agent is working"""
+    try:
+        import requests
+        
+        # Test if your Render service is up
+        response = requests.get('https://surg-care.onrender.com', timeout=10)
+        
+        if response.status_code == 200:
+            return "✅ Render agent service is running!"
+        else:
+            return f"❌ Agent service returned: {response.status_code}"
+            
+    except requests.exceptions.Timeout:
+        return "⏱️ Agent service timeout - might be sleeping"
+    except Exception as e:
+        return f"❌ Error connecting to agent: {e}"
+    
 @app.route('/health')
 def health():
     """Health check endpoint"""
